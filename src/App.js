@@ -20,7 +20,6 @@ function App() {
         ...prev,
         currentTriangle: newTriangle
       }));
-      console.log(newTriangle.getType());
     } catch (error) {
       window.ts.ui.Notification.error(error.toString());
       setState(prev => ({
@@ -43,7 +42,7 @@ function App() {
     <div className="App">
       {state.currentTriangle != null && (
         <div data-ts="Note">
-          <i class="ts-icon-triangleup"></i>
+          <i className="ts-icon-triangleup"></i>
           <p>Created "{state.currentTriangle.getType()}" triangle. </p>
         </div>
       )}
