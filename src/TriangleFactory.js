@@ -3,7 +3,7 @@ function TriangleFactory() {
     let uniqueSides = this.validateTriangle(sideOne, sideTwo, sideThree);
     switch (uniqueSides) {
       case 1:
-        return new EqualateralTriangle(sideOne);
+        return new EquilateralTriangle(sideOne);
       case 2:
         return new IsoscelesTriangle(sideOne, sideTwo, sideThree);
       case 3:
@@ -41,10 +41,10 @@ function BaseTriangle(sideOne, sideTwo, sideThree) {
   this.getType = () => {};
 }
 
-function EqualateralTriangle(side) {
+function EquilateralTriangle(side) {
   BaseTriangle.call(this, side, side, side);
   this.getType = () => {
-    return "Equalateral";
+    return "Equilateral";
   };
 }
 function IsoscelesTriangle(sideOne, sideTwo, sideThree) {
