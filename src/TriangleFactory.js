@@ -29,7 +29,7 @@ function TriangleFactory() {
         throw "Invalid Triangle: Any Two sides must be greater length than Third side";
       }
     }
-    return -1;
+    throw "Invalid Triangle: Inputs must be numbers";
   };
 }
 function BaseTriangle(sideOne, sideTwo, sideThree) {

@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import { Button, Form, Note } from "react-tradeshift-ui/";
+import { Button, Form } from "react-tradeshift-ui/";
 
 import { TriangleFactory } from "./TriangleFactory";
+import "./App.css";
 
 function App() {
   const [state, setState] = useState({ currentTriangle: null });
@@ -22,6 +23,10 @@ function App() {
       console.log(newTriangle.getType());
     } catch (error) {
       window.ts.ui.Notification.error(error.toString());
+      setState(prev => ({
+        ...prev,
+        currentTriangle: null
+      }));
     }
   }
 
@@ -35,40 +40,48 @@ function App() {
   }
 
   return (
-    <div>
+    <div className="App">
       {state.currentTriangle != null && (
         <div data-ts="Note">
           <i class="ts-icon-triangleup"></i>
-          <p>{state.currentTriangle.getType()} </p>
+          <p>Created "{state.currentTriangle.getType()}" triangle. </p>
         </div>
       )}
+      <h1>Triangle Creator</h1>
+      <div className="Forms">
+        <Form>
+          <fieldset>
+            <label>
+              <span>Side One</span>
+              <input name="one" onChange={handleChange} type="text" required />
+            </label>
+          </fieldset>
+        </Form>
+        <Form>
+          <fieldset>
+            <label>
+              <span>Side Two</span>
+              <input name="two" onChange={handleChange} type="text" required />
+            </label>
+          </fieldset>
+        </Form>
+        <Form>
+          <fieldset>
+            <label>
+              <span>Side Three</span>
+              <input
+                name="three"
+                onChange={handleChange}
+                type="text"
+                required
+              />
+            </label>
+          </fieldset>
+        </Form>
+      </div>
       <Button className="ts-primary" onClick={submitTriangle}>
         <span>Create Triangle</span>
       </Button>
-      <Form>
-        <fieldset>
-          <label>
-            <span>Side One</span>
-            <input name="one" onChange={handleChange} type="text" required />
-          </label>
-        </fieldset>
-      </Form>
-      <Form>
-        <fieldset>
-          <label>
-            <span>Side Two</span>
-            <input name="two" onChange={handleChange} type="text" required />
-          </label>
-        </fieldset>
-      </Form>
-      <Form>
-        <fieldset>
-          <label>
-            <span>Side Three</span>
-            <input name="three" onChange={handleChange} type="text" required />
-          </label>
-        </fieldset>
-      </Form>
     </div>
   );
 }
