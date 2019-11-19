@@ -9,7 +9,7 @@ function TriangleFactory() {
       case 3:
         return new ScaleneTriangle(sideOne, sideTwo, sideThree);
       default:
-        throw "Invalid Triangle";
+        throw new Error("Invalid Triangle");
     }
   };
 
@@ -26,10 +26,12 @@ function TriangleFactory() {
         });
         return Object.keys(uniqueSides).length;
       } else {
-        throw "Invalid Triangle: Any Two sides must be greater length than Third side";
+        throw new Error(
+          "Invalid Triangle: Adding two sides must be greater length than third side"
+        );
       }
     }
-    throw "Invalid Triangle: Inputs must be numbers";
+    throw new Error("Invalid Triangle: Inputs must be numbers");
   };
 }
 function BaseTriangle(sideOne, sideTwo, sideThree) {
